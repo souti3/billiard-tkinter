@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import tkinter
+from tkinter import messagebox
 top = tkinter.Tk()
 top.title("Hello stranger")
 
@@ -28,9 +29,18 @@ nameEntry.pack(side = tkinter.RIGHT, padx=10, pady=10)
 frame3 = tkinter.Frame(top)
 frame3.pack()
 
-hello = tkinter.Button ( frame3, text="Begrüssung" )
+def helloCallBack():
+    name = nameEntry.get()
+    greetings = "Hello " + name + "!"
+    msg = messagebox.showinfo( "Hello", greetings)
+
+hello = tkinter.Button ( frame3, text="Begrüssung", command=helloCallBack, state=tkinter.NORMAL )
+
+#if nameEntry.get() == "":
+#    hello = tkinter.Button ( frame3, text="Begrüssung", command=helloCallBack, state=tkinter.NORMAL )
+#else:
+#    hello = tkinter.Button ( frame3, text="Begrüssung", command=helloCallBack, state=tkinter.DISABLED )
 
 hello.pack(side=tkinter.BOTTOM , padx=10, pady=10)
 
 top.mainloop()
-
