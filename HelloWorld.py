@@ -34,12 +34,19 @@ def helloCallBack():
     greetings = "Hello " + name + "!"
     msg = messagebox.showinfo( "Hello", greetings)
 
-hello = tkinter.Button ( frame3, text="Begrüssung", command=helloCallBack, state=tkinter.NORMAL )
+###
+def toggle_state(*_):
+    if nameEntry.var.get():
+        hello['state'] = 'normal'
+    else:
+        hello['state'] = 'disabled'
 
-#if nameEntry.get() == "":
-#    hello = tkinter.Button ( frame3, text="Begrüssung", command=helloCallBack, state=tkinter.NORMAL )
-#else:
-#    hello = tkinter.Button ( frame3, text="Begrüssung", command=helloCallBack, state=tkinter.DISABLED )
+nameEntry.var = tkinter.StringVar()
+nameEntry['textvariable'] = nameEntry.var
+nameEntry.var.trace_add('write', toggle_state)
+
+hello = tkinter.Button ( frame3, text="Begrüssung", command=helloCallBack, state=tkinter.DISABLED )
+
 
 hello.pack(side=tkinter.BOTTOM , padx=10, pady=10)
 
