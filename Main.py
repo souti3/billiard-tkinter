@@ -32,12 +32,19 @@ root.title("billiard-tkinter")
 
 
 canvas = tk.Canvas(root, width=500, height=500)
+
+
+
+# draw a ball
+bx1 = 10
+bx2 = 16
+by1 = 10
+by2 = 16
+ball = canvas.create_oval(bx1, by1, bx2, by2, fill='#000000')
 canvas.pack()
 canvas.old_coords = None
 
 root.bind('<ButtonPress-1>', draw_line)
 root.bind('<ButtonRelease-1>', draw_line)
-
-###################################################
 
 root.mainloop()
